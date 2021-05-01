@@ -12,15 +12,19 @@ namespace ByteBank.Funcionarios
 
         public string Nome { get; set; }
         public string CPF { get; private set; }
-        public double Salario { get; set; }
+        public double Salario { get; protected set; }
 
-        public Funcionario(string cpf)
+        public Funcionario(string cpf, double salario)
         {
             CPF = cpf;
-
+            Salario = salario;
             Console.WriteLine("Criando FUNCIONARIO");
-
             TotalDeFuncionarios++;
+        }
+
+        public virtual void AumentarSalario()
+        {
+            Salario *= 1.1; //Aumenta 10%
         }
 
         //Cria-se um método ao invés de uma propriedade para retornar um valor, pois o uso de propriedades geralmente é utilizado quando se tem um acesso imediato ao valor, sem precisar executar algum cálculo, ou alguma ação que demande um custo de processamento

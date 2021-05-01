@@ -13,10 +13,13 @@ namespace ByteBank
         {
             GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
 
-            Funcionario carlos = new Funcionario("033.437.160-06");
+            Funcionario carlos = new Funcionario("033.437.160-06", 2000);
 
             carlos.Nome = "Carlos";
-            carlos.Salario = 2000;
+
+            carlos.AumentarSalario();
+
+            Console.WriteLine($"Novo salário do Carlos: {carlos.Salario}");
 
             Console.WriteLine(Funcionario.TotalDeFuncionarios);
 
@@ -26,12 +29,14 @@ namespace ByteBank
 
             Diretor roberta = new Diretor("454.658.148-03");
             roberta.Nome = "Roberta";
-            roberta.Salario = 5000;
 
             //Aqui ele vai printar 2 funcionários, pois quando se cria um objeto de uma classe derivada (diretor é derivado de funcionário), o compilador chama o construtor da classe base, para depois chamar o construtor da classe derivada
             Console.WriteLine(Funcionario.TotalDeFuncionarios);
 
             Funcionario robertaTeste = roberta; //Polimorfismo aqui também
+
+            roberta.AumentarSalario();
+            Console.WriteLine($"Novo salário de Roberta: {roberta.Salario}");
 
             Console.WriteLine($"Bonificação de uma referência de Diretor: {roberta.GetBonificacao()}");
             Console.WriteLine($"Bonificação de uma referência de Funcionario: {robertaTeste.GetBonificacao()}");

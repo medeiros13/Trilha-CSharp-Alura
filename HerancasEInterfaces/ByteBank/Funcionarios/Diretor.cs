@@ -8,11 +8,15 @@ namespace ByteBank.Funcionarios
 {
     public class Diretor : Funcionario
     {
-        public Diretor(string cpf) : base(cpf)
+        public Diretor(string cpf) : base(cpf, 5000)
         {
             Console.WriteLine("criando DIRETOR");
         }
 
+        public override void AumentarSalario()
+        {
+            Salario *= 1.15; //Aumenta 15%
+        }
         //O uso da palavra "override" significa que o método está sobrescrevendo o método da sua classe pai
         //ou seja, o GetBonificacao do Diretor, está sobrescrevendo o GetBonificacao do Funcionario
         public override double GetBonificacao()
