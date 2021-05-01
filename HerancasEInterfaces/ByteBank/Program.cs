@@ -13,20 +13,23 @@ namespace ByteBank
         {
             GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
 
-            Funcionario carlos = new Funcionario();
+            Funcionario carlos = new Funcionario("033.437.160-06");
 
             carlos.Nome = "Carlos";
-            carlos.CPF = "033.437.160-06";
             carlos.Salario = 2000;
+
+            Console.WriteLine(Funcionario.TotalDeFuncionarios);
 
             gerenciador.Registrar(carlos);
 
-            Funcionario pedro = new Diretor(); //Isso é válido, pois o Diretor é um funcionário, isso é chamado de Polimorfismo
+            //Funcionario pedro = new Diretor(); //Isso é válido, pois o Diretor é um funcionário, isso é chamado de Polimorfismo
 
-            Diretor roberta = new Diretor();
+            Diretor roberta = new Diretor("454.658.148-03");
             roberta.Nome = "Roberta";
-            roberta.CPF = "454.658.148-03";
             roberta.Salario = 5000;
+
+            //Aqui ele vai printar 2 funcionários, pois quando se cria um objeto de uma classe derivada (diretor é derivado de funcionário), o compilador chama o construtor da classe base, para depois chamar o construtor da classe derivada
+            Console.WriteLine(Funcionario.TotalDeFuncionarios);
 
             Funcionario robertaTeste = roberta; //Polimorfismo aqui também
 
