@@ -28,6 +28,11 @@ namespace ByteBank
             roberta.CPF = "454.658.148-03";
             roberta.Salario = 5000;
 
+            Funcionario robertaTeste = roberta; //Polimorfismo aqui também
+
+            Console.WriteLine($"Bonificação de uma referência de Diretor: {roberta.GetBonificacao()}");
+            Console.WriteLine($"Bonificação de uma referência de Funcionario: {robertaTeste.GetBonificacao()}");
+
             gerenciador.Registrar(roberta);
 
             Console.WriteLine(carlos.Nome);
