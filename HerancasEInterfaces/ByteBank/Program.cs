@@ -21,6 +21,8 @@ namespace ByteBank
 
             gerenciador.Registrar(carlos);
 
+            Funcionario pedro = new Diretor(); //Isso é válido, pois o Diretor é um funcionário, isso é chamado de Polimorfismo
+
             Diretor roberta = new Diretor();
             roberta.Nome = "Roberta";
             roberta.CPF = "454.658.148-03";
