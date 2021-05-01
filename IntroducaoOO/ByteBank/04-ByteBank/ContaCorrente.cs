@@ -13,7 +13,7 @@ namespace _04_ByteBank
         public int numero { get; set; }
         public double saldo { get; set; } = 100;
 
-        public bool Sacar (double valor)
+        public bool Sacar(double valor)
         {
             if (saldo < valor)
             {
@@ -24,6 +24,23 @@ namespace _04_ByteBank
                 saldo -= valor;
                 return true;
             }
+        }
+
+        public void Depositar(double valor)
+        {
+            this.saldo += valor;
+        }
+
+        public bool Transferir(double valor, ContaCorrente contaDestino)
+        {
+            if (this.saldo < valor)
+            {
+                return false;
+            }
+
+            this.saldo -= valor;
+            contaDestino.Depositar(valor);
+            return true;
         }
     }
 }
