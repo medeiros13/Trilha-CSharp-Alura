@@ -20,22 +20,10 @@ namespace ByteBank.Funcionarios
         public string CPF { get; set; }
         public double Salario { get; set; }
 
-        public Funcionario(int tipo)
-        {
-            _tipo = tipo;
-        }
-
         //Cria-se um método ao invés de uma propriedade para retornar um valor, pois o uso de propriedades geralmente é utilizado quando se tem um acesso imediato ao valor, sem precisar executar algum cálculo, ou alguma ação que demande um custo de processamento
         public double GetBonificacao()
         {
-            if (_tipo == 1)
-            {
-                return Salario;
-            }
-            else
-            {
-                return Salario * 0.10;
-            }
+            return Salario * 0.10;
         }
     }
 }
