@@ -8,9 +8,14 @@ namespace ByteBank.Funcionarios
 {
     public class GerenteDeConta : Funcionario
     {
+        public string Senha { get; set; }
         public GerenteDeConta(string cpf) : base(cpf, 4000)
         {
 
+        }
+        public bool Autenticar(string senha)
+        {
+            return Senha == senha;
         }
 
         public override void AumentarSalario()
