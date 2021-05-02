@@ -21,7 +21,7 @@ namespace ByteBank.Funcionarios
         //ou seja, o GetBonificacao do Diretor, está sobrescrevendo o GetBonificacao do Funcionario
         public override double GetBonificacao()
         {
-            return Salario + base.GetBonificacao();
+            return Salario * 0.5;
         }
     }
 }

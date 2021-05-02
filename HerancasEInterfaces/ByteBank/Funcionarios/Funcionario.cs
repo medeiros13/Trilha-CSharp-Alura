@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Funcionarios
 {
-    public class Funcionario
+    public abstract class Funcionario //A classe é abstrata, isso significa que a mesma não deve ser instanciada diretamente. Pois todo Designer, Diretor, Auxiliar e GerenteDeConta são Funcionários, logo devem ser instanciados diretamente pelo seu tipo
     {
         public static int TotalDeFuncionarios { get; private set; }
 

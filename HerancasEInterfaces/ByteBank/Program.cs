@@ -11,47 +11,32 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
+            CalcularBonificacao();
+            Console.ReadLine();
+        }
 
-            Funcionario carlos = new Funcionario("033.437.160-06", 2000);
+        public static void CalcularBonificacao()
+        {
+            GerenciadorBonificacao gerenciadorBonificacao = new GerenciadorBonificacao();
 
-            carlos.Nome = "Carlos";
+            Funcionario pedro = new Designer("833.222.048-39");
+            pedro.Nome = "Pedro";
 
-            carlos.AumentarSalario();
-
-            Console.WriteLine($"Novo salário do Carlos: {carlos.Salario}");
-
-            Console.WriteLine(Funcionario.TotalDeFuncionarios);
-
-            gerenciador.Registrar(carlos);
-
-            //Funcionario pedro = new Diretor(); //Isso é válido, pois o Diretor é um funcionário, isso é chamado de Polimorfismo
-
-            Diretor roberta = new Diretor("454.658.148-03");
+            Funcionario roberta = new Diretor("159.753.398-04");
             roberta.Nome = "Roberta";
 
-            //Aqui ele vai printar 2 funcionários, pois quando se cria um objeto de uma classe derivada (diretor é derivado de funcionário), o compilador chama o construtor da classe base, para depois chamar o construtor da classe derivada
-            Console.WriteLine(Funcionario.TotalDeFuncionarios);
+            Funcionario igor = new Auxiliar("981.198.778-53");
+            igor.Nome = "Igor";
 
-            Funcionario robertaTeste = roberta; //Polimorfismo aqui também
+            Funcionario camila = new GerenteDeConta("326.985.628-89");
+            camila.Nome = "Camila";
 
-            roberta.AumentarSalario();
-            Console.WriteLine($"Novo salário de Roberta: {roberta.Salario}");
+            gerenciadorBonificacao.Registrar(pedro);
+            gerenciadorBonificacao.Registrar(roberta);
+            gerenciadorBonificacao.Registrar(igor);
+            gerenciadorBonificacao.Registrar(camila);
 
-            Console.WriteLine($"Bonificação de uma referência de Diretor: {roberta.GetBonificacao()}");
-            Console.WriteLine($"Bonificação de uma referência de Funcionario: {robertaTeste.GetBonificacao()}");
-
-            gerenciador.Registrar(roberta);
-
-            Console.WriteLine(carlos.Nome);
-            Console.WriteLine(carlos.GetBonificacao());
-
-            Console.WriteLine(roberta.Nome);
-            Console.WriteLine(roberta.GetBonificacao());
-
-            Console.WriteLine($"Total de Bonificações: {gerenciador.GetTotalBonificacao()}");
-
-            Console.ReadLine();
+            Console.WriteLine($"Total de bonificações do mês: {gerenciadorBonificacao.GetTotalBonificacao()}");
         }
     }
 }
