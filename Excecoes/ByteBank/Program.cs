@@ -12,14 +12,25 @@ namespace ByteBank
         {
             try
             {
+                ContaCorrente conta = new ContaCorrente(514, 0);
                 Metodo();
             }
-            catch(NullReferenceException erro)
+            catch (ArgumentException e)
             {
-                Console.WriteLine(erro.StackTrace);
-                Console.WriteLine("Aconteceu um erro!");
+                Console.WriteLine($"Argumento com o problema: {e.ParamName}");
+                Console.WriteLine(e.Message);
             }
-            
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Ocorreu uma exceção do tipo DivideByZeroException");
+                Console.WriteLine(e.Message);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Aconteceu um erro!");
+                Console.WriteLine(e.Message);
+            }
+
             Console.ReadLine();
         }
 
@@ -37,7 +48,7 @@ namespace ByteBank
                 int resultado = Dividir(10, divisor);
                 Console.WriteLine("Resultado da divisão de 10 por " + divisor + " é " + resultado);
             }
-            catch(DivideByZeroException erro)
+            catch (DivideByZeroException erro)
             {
                 Console.WriteLine(erro.Message);
                 Console.WriteLine(erro.StackTrace);
