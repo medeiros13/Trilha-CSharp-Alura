@@ -11,32 +11,48 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            CarregarContas();
+            try
+            {
+                CarregarContas();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Catch no método main");
+            }
             Console.WriteLine("Execução finalizada. Tecle enter para sair");
             Console.ReadLine();
         }
         private static void CarregarContas()
         {
-            LeitorDeArquivos leitor = null;
-            try
-            {
-                leitor = new LeitorDeArquivos("contas.txt");
-                leitor.LerProximaLinha();
-                leitor.LerProximaLinha();
-                leitor.LerProximaLinha();
 
-            }
-            catch (IOException)
+            //Using é uma outra forma parecida com a ideia do bloco try/catch/finally
+            //Para se usar o using em classes criadas por você, essa classe obrigatóriamente precisa implementar a interface IDisposable
+            using(LeitorDeArquivos leitor = new LeitorDeArquivos("text.txt"))
             {
-                Console.WriteLine("Exceção do tipo IOException capturada e tratada.");
+                leitor.LerProximaLinha();
             }
-            finally
-            {
-                if (leitor != null)
-                {
-                    leitor.Fechar();
-                }
-            }
+
+            // -----------------------------------------------------
+            //LeitorDeArquivos leitor = null;
+            ////O bloco try deve obrigatoriamente ou ter um try, ou ter um catch, ou ter os 2
+            ////Usamos o catch quando precisamos tratar uma exceção;
+            ////Usamos o finally quando precisamos executar algo independente se a aplicação der erro ou não
+            //try
+            //{
+            //    leitor = new LeitorDeArquivos("contas.txt");
+            //    leitor.LerProximaLinha();
+            //    leitor.LerProximaLinha();
+            //    leitor.LerProximaLinha();
+
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("Executando o finally");
+            //    if (leitor != null)
+            //    {
+            //        leitor.Fechar();
+            //    }
+            //}
         }
         private static void TestaInnerException()
         {
