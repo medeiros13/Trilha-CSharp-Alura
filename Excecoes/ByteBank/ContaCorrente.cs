@@ -14,6 +14,9 @@ namespace ByteBank
 
         public Cliente Titular { get; set; }
 
+        public int ContadorSaquesNaoPermitidos { get; private set; }
+        public int ContadorTransferenciasNaoPermitidas { get; private set; }
+
         //Atributos readonly não tem setters em suas propriedades, e só podem ter seu valor setado no construtor da classe, fora dele, isso não é possível
         //Isso é útil para informações que só vão receber valor uma única vez
         public int Numero { get; } //Se você só deixar o get na propriedade, o compilador entende que ela é readonly, só podendo receber valor no construtor da classe
@@ -65,6 +68,7 @@ namespace ByteBank
 
             if (_saldo < valor)
             {
+                ContadorSaquesNaoPermitidos++;
                 throw new SaldoInsuficienteException(Saldo, valor);
             }
             _saldo -= valor;
@@ -82,7 +86,15 @@ namespace ByteBank
                 throw new ArgumentException("Valor inválido para a transferência.", nameof(valor));
             }
 
-            Sacar(valor);
+            try
+            {
+                Sacar(valor);
+            }
+            catch (ArgumentException)
+            {
+                ContadorTransferenciasNaoPermitidas++;
+                throw;
+            }
             contaDestino.Depositar(valor);
         }
     }

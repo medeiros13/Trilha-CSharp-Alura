@@ -17,7 +17,7 @@ namespace ByteBank
 
                 ContaCorrente conta2 = new ContaCorrente(485, 456478);
 
-                conta2.Transferir(-10, conta);
+                conta2.Transferir(10000, conta);
 
                 conta.Depositar(50);
 
@@ -27,24 +27,28 @@ namespace ByteBank
 
                 //Metodo();
             }
-            catch (SaldoInsuficienteException e)
+            catch (SaldoInsuficienteException ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Saldo);
+                Console.WriteLine(ex.ValorSaque);
+
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException ex)
             {
-                Console.WriteLine($"Argumento com o problema: {e.ParamName}.");
-                Console.WriteLine(e.Message);
+                Console.WriteLine($"Argumento com o problema: {ex.ParamName}.");
+                Console.WriteLine(ex.Message);
             }
-            catch (DivideByZeroException e)
+            catch (DivideByZeroException ex)
             {
                 Console.WriteLine("Ocorreu uma exceção do tipo DivideByZeroException.");
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException ex)
             {
                 Console.WriteLine("Aconteceu um erro.");
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
 
             Console.ReadLine();
