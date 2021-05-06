@@ -12,45 +12,22 @@ namespace ByteBank
         {
             try
             {
+                ContaCorrente conta1 = new ContaCorrente(4564, 789684);
+                ContaCorrente conta2 = new ContaCorrente(7891, 456794);
 
-                ContaCorrente conta = new ContaCorrente(514, 5435);
-
-                ContaCorrente conta2 = new ContaCorrente(485, 456478);
-
-                conta2.Transferir(10000, conta);
-
-                conta.Depositar(50);
-
-                Console.WriteLine(conta.Saldo);
-
-                conta.Sacar(500);
-
-                //Metodo();
+                //conta1.Transferir(10000, conta2);
+                conta1.Sacar(10000);
             }
-            catch (SaldoInsuficienteException ex)
+            catch (OperacaoFinanceiraException ex)
             {
-                Console.WriteLine(ex.Saldo);
-                Console.WriteLine(ex.ValorSaque);
-
+                Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
-                Console.WriteLine(ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Argumento com o problema: {ex.ParamName}.");
-                Console.WriteLine(ex.Message);
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine("Ocorreu uma exceção do tipo DivideByZeroException.");
-                Console.WriteLine(ex.Message);
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.WriteLine("Aconteceu um erro.");
-                Console.WriteLine(ex.Message);
-            }
 
+                //Console.WriteLine("Informações da INNER EXCEPTION (exceção interna):");
+                //Console.WriteLine(ex.InnerException.Message);
+                //Console.WriteLine(ex.InnerException.StackTrace);
+            }
+            Console.WriteLine("Execução finalizada. Tecle enter para sair");
             Console.ReadLine();
         }
     }
