@@ -25,8 +25,9 @@ namespace ByteBank
         private static void CarregarContas()
         {
 
-            //Using é uma outra forma parecida com a ideia do bloco try/catch/finally
+            //Using é uma outra forma parecida com a ideia do bloco try/finally
             //Para se usar o using em classes criadas por você, essa classe obrigatóriamente precisa implementar a interface IDisposable
+            //Ele não trata exceções
             using(LeitorDeArquivos leitor = new LeitorDeArquivos("text.txt"))
             {
                 leitor.LerProximaLinha();
