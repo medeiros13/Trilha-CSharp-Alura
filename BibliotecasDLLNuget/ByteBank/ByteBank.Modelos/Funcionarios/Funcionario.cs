@@ -28,6 +28,8 @@ namespace ByteBank.Modelos.Funcionarios
 
         public abstract void AumentarSalario();
 
+        //A mistura de protected com internal é permitida
+        //Isso quer dizer que esse método é visível para todas as classes derivadas de Funcionário tanto dentro quanto fora do projeto
         protected internal abstract double GetBonificacao();
     }
 }
