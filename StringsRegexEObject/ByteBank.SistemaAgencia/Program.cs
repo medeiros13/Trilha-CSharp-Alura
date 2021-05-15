@@ -19,15 +19,20 @@ namespace ByteBank.SistemaAgencia
             //Meu nome é Gabriel, me ligue em 8544-8098
 
             //Teste expressões regulares
-            string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]"; //Expressão regular de um número de telefone
+            //Com esse padrão, o sistema busca na tabela ASCII os códigos dos caracteres "0" até o "9", e o código do caractere "-"
+            //string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]"; //Expressão regular de um número de telefone
+            //string padrao = "[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]"; //Expressão regular de cima, porém um pouco simplificada
+            string padrao = "[0-9]{4}[-][0-9]{4}"; //Expressão regular de cima, só que simplificada
+            //o que fica entre "{}" é o numero que o padrão se repete
+            //Ou seja, aqui estamos buscando caracteres de 0 a 9 quatro vezes, depois um traço e depois caracteceres de 0 a 9 quatro vezes de novo
+
             string textoDeTeste = "Meu nome é Gabriel, me ligue em 8544-8098";
 
             Match resultado = Regex.Match(textoDeTeste, padrao); //Busca na string o padrão da expressão regular
             Console.WriteLine(resultado.Value); //Mostra o número de telefone que respeita a expressão do número de telefone
-
-            Console.ReadLine();
             Console.WriteLine(Regex.IsMatch(textoDeTeste, padrao)); //Retorna true se a string respeitar o padrão da expressão regular
 
+            Console.ReadLine();
 
 
             string urlTeste = "https://www.bytebank.com/cambio";
