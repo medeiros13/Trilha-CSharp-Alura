@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
@@ -12,12 +13,26 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            string urlTeste = "https://www.bytebank.com/cambio";
-            int indiceByteBank = urlTeste.IndexOf("https://www.bytebank.com");
             //Olá meu nome é Gabriel e você pode entrar em contato comigo
             //através do número 8457-4456!
 
             //Meu nome é Gabriel, me ligue em 8544-8098
+
+            //Teste expressões regulares
+            string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]"; //Expressão regular de um número de telefone
+            string textoDeTeste = "Meu nome é Gabriel, me ligue em 8544-8098";
+
+            Match resultado = Regex.Match(textoDeTeste, padrao); //Busca na string o padrão da expressão regular
+            Console.WriteLine(resultado.Value); //Mostra o número de telefone que respeita a expressão do número de telefone
+
+            Console.ReadLine();
+            Console.WriteLine(Regex.IsMatch(textoDeTeste, padrao)); //Retorna true se a string respeitar o padrão da expressão regular
+
+
+
+            string urlTeste = "https://www.bytebank.com/cambio";
+            int indiceByteBank = urlTeste.IndexOf("https://www.bytebank.com");
+
 
             Console.WriteLine(urlTeste.StartsWith("https://www.bytebank.com"));
             Console.WriteLine(urlTeste.EndsWith("cambio/"));
