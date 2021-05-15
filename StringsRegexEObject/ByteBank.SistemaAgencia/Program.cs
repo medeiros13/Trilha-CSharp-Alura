@@ -12,6 +12,17 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            string urlTeste = "https://www.bytebank.com/cambio";
+            int indiceByteBank = urlTeste.IndexOf("https://www.bytebank.com");
+            //Olá meu nome é Gabriel e você pode entrar em contato comigo
+            //através do número 8457-4456!
+
+            //Meu nome é Gabriel, me ligue em 8544-8098
+
+            Console.WriteLine(urlTeste.StartsWith("https://www.bytebank.com"));
+            Console.WriteLine(urlTeste.EndsWith("cambio/"));
+            Console.WriteLine(urlTeste.Contains("ByteBank"));
+            Console.ReadLine();
             // pagina?argumentos
             // 012345678
 
@@ -20,6 +31,7 @@ namespace ByteBank.SistemaAgencia
             //                              |
             //             ----------------´
 
+            //Programa principal
             string urlParametros = "http://www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&valor=1500";
             ExtratorValorDeArgumentosURL extratorDeValores = new ExtratorValorDeArgumentosURL(urlParametros);
 
@@ -29,8 +41,25 @@ namespace ByteBank.SistemaAgencia
             string valorDaMoedaOrigem = extratorDeValores.GetValor("moedaOrigem");
             Console.WriteLine($"Valor de moeda origem: {valorDaMoedaOrigem}");
 
-            Console.WriteLine($"Valor: {extratorDeValores.GetValor("Valor")}");
+            Console.WriteLine($"Valor: {extratorDeValores.GetValor("VALOR")}");
 
+            Console.ReadLine();
+
+
+            //Testando tolower
+            string mensagemOrigem = "PALAVRA";
+            string termoBusca = "ra";
+            Console.WriteLine(mensagemOrigem.ToLower());
+
+            //Testando replace
+            termoBusca = termoBusca.Replace('r','R');
+            Console.WriteLine(termoBusca);
+
+            termoBusca = termoBusca.Replace('a', 'A');
+            Console.WriteLine(termoBusca);
+
+
+            Console.WriteLine(mensagemOrigem.IndexOf(termoBusca));
             Console.ReadLine();
 
             //Testando o método Remove
