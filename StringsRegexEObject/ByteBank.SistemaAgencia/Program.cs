@@ -13,6 +13,14 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Olá Mundo!");
+            Console.WriteLine(123);
+            Console.WriteLine(12.5);
+            Console.WriteLine(true);
+            Console.ReadLine();
+        }
+        static void TestaString()
+        {
             //Olá meu nome é Gabriel e você pode entrar em contato comigo
             //através do número 8457-4456!
 
@@ -76,7 +84,7 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine(mensagemOrigem.ToLower());
 
             //Testando replace
-            termoBusca = termoBusca.Replace('r','R');
+            termoBusca = termoBusca.Replace('r', 'R');
             Console.WriteLine(termoBusca);
 
             termoBusca = termoBusca.Replace('a', 'A');
@@ -132,9 +140,6 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine(url);
             string argumentos = url.Substring(indiceInterrogacao + 1);
             Console.WriteLine(argumentos);
-
-
-            Console.ReadLine();
         }
     }
 
