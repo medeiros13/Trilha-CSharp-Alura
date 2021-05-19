@@ -12,6 +12,13 @@ namespace ByteBank.SistemaAgencia
     {
         private ContaCorrente[] _itens;
         private int _proximaPosicao;
+        public int Tamanho
+        {
+            get
+            {
+                return _proximaPosicao;
+            }
+        }
         public ListaDeContaCorrente(int capacidadeInicial = 5)
         {
             _itens = new ContaCorrente[capacidadeInicial];
@@ -22,10 +29,18 @@ namespace ByteBank.SistemaAgencia
         {
 
         }
+        public ContaCorrente GetItemNoIndice(int indice)
+        {
+            if (indice < 0 || indice >= _proximaPosicao)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+            return _itens[indice];
+        }
         public void Adicionar(ContaCorrente item)
         {
             VerificarCapacidade(_proximaPosicao + 1);
-            Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
+            //Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
         }
@@ -70,14 +85,32 @@ namespace ByteBank.SistemaAgencia
             {
                 novoTamanho = tamanhoNecessario;
             }
-            Console.WriteLine("Aumentando capacidade da lista");
+            //Console.WriteLine("Aumentando capacidade da lista");
             ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
             for (int i = 0; i < _itens.Length; i++)
             {
                 novoArray[i] = _itens[i];
-                Console.WriteLine(".");
+                //Console.WriteLine(".");
             }
             _itens = novoArray;
+        }
+
+        //esse seria um indexador por chave, nós buscaríamos por alguma chave string no array
+        //public ContaCorrente this[string texto]
+        //{
+        //    get
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        //isso é um indexador, na hora de usarmos, iremos dar um ListaDeContaCorrente[index], como se fosse um array de tipo primitivo, aí ele vai retornar uma ContaCorrente nesse index
+        public ContaCorrente this[int indice]
+        {
+            get
+            {
+                return GetItemNoIndice(indice);
+            }
         }
     }
 }
