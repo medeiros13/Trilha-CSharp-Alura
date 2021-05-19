@@ -12,6 +12,23 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                new ContaCorrente(875, 5679787),
+                new ContaCorrente(875, 56797989),
+                new ContaCorrente(875, 5679745)
+            };
+
+
+            for (int i = 0; i < contas.Length; i++)
+            {
+                ContaCorrente contaAtual = contas[i];
+                Console.WriteLine($"conta[{i}] = {contaAtual.Numero}");
+            }
+            Console.ReadLine();
+        }
+        static void TestaArrayInt()
+        {
 
             //Array de inteiros com 5 posições!
             int[] idades = new int[3];
@@ -33,7 +50,6 @@ namespace ByteBank.SistemaAgencia
             }
             int media = acumulador / idades.Length;
             Console.WriteLine($"Média de idades = {media}");
-            Console.ReadLine();
         }
     }
 }
