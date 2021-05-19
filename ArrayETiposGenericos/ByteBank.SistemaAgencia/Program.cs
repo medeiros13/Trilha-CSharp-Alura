@@ -13,6 +13,10 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
         {
             ListaDeContaCorrente lista = new ListaDeContaCorrente();
+
+            //lista.MeuMetodo(numero: 10); Exemplo de chamada onde se passa direto o argumento que queremos usar
+
+
             lista.Adicionar(new ContaCorrente(875, 5679787));
             lista.Adicionar(new ContaCorrente(875, 56797989));
             lista.Adicionar(new ContaCorrente(875, 5679745));
