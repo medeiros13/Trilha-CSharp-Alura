@@ -36,12 +36,26 @@ namespace ByteBank.SistemaAgencia
             for (int i = 0; i < _proximaPosicao; i++)
             {
                 ContaCorrente itemAtual = _itens[i];
-                
+
+                //Busca pela conta que desejamos remover, se achar, sai do for
                 if (itemAtual.Equals(item))
                 {
-
+                    indiceItem = i;
+                    break;
                 }
             }
+
+            //percorre a partir do item que desejamos remover e vai movendo as posições superiores uma posição para baixo
+            for (int i = indiceItem; i < _proximaPosicao - 1; i++)
+            {
+                _itens[i] = _itens[i + 1];
+            }
+
+            //Decrementa a última posição, pois agora temos uma posição livre
+            _proximaPosicao--;
+
+            //Seta a última casa como null pois o valor dela já foi movido para a casa anterior
+            _itens[_proximaPosicao] = null;
         }
 
         private void VerificarCapacidade(int tamanhoNecessario)
