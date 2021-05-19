@@ -30,6 +30,20 @@ namespace ByteBank.SistemaAgencia
             _proximaPosicao++;
         }
 
+        public void Remover(ContaCorrente item)
+        {
+            int indiceItem = -1;
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                ContaCorrente itemAtual = _itens[i];
+                
+                if (itemAtual.Equals(item))
+                {
+
+                }
+            }
+        }
+
         private void VerificarCapacidade(int tamanhoNecessario)
         {
             if (_itens.Length >= tamanhoNecessario)
