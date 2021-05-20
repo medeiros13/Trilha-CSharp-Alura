@@ -12,9 +12,23 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+
+            ListaDeObject listaDeIdades = new ListaDeObject();
+            listaDeIdades.Adicionar(10);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.Adicionar(4);
+            listaDeIdades.AdicionarVarios(16,23,60);
+
+            for (int i = 0; i < listaDeIdades.Tamanho; i++)
+            {
+                int idade = (int)listaDeIdades[i];
+                Console.WriteLine($"Idade no índice: {i}: {idade}");
+            }
+
             Console.WriteLine(SomarVarios(1, 2, 3, 4, 123123, 12312));
 
 
+            Console.ReadLine();
         }
         static int SomarVarios(params int[] numeros)
         {
@@ -73,7 +87,6 @@ namespace ByteBank.SistemaAgencia
                 ContaCorrente itemAtual = lista[i]; //Aqui usamos um indexador
                 Console.WriteLine($"Item na posição: {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
             }
-            Console.ReadLine();
         }
 
         static void TestaArrayInt()
