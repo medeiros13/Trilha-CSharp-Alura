@@ -12,30 +12,20 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+            Console.WriteLine(SomarVarios(1, 2, 3, 4, 123123, 12312));
 
-            //lista.MeuMetodo(numero: 10); Exemplo de chamada onde se passa direto o argumento que queremos usar
 
-            ContaCorrente contadoGui = new ContaCorrente(434, 3434343);
-            lista.Adicionar(contadoGui);
-
-            lista.Adicionar(new ContaCorrente(875, 5679787));
-            lista.Adicionar(new ContaCorrente(875, 56797989));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-            lista.Adicionar(new ContaCorrente(875, 5679745));
-
-            for (int i = 0; i < lista.Tamanho; i++)
-            {
-                ContaCorrente itemAtual = lista[i]; //Aqui usamos um indexador
-                Console.WriteLine($"Item na posição: {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
-            }
-            Console.ReadLine();
         }
+        static int SomarVarios(params int[] numeros)
+        {
+            int acumulador = 0;
+            foreach (int numero in numeros)
+            {
+                acumulador += numero;
+            }
+            return acumulador;
+        }
+
 
         static void TestaArrayDeContas()
         {
@@ -52,6 +42,38 @@ namespace ByteBank.SistemaAgencia
                 ContaCorrente contaAtual = contas[i];
                 Console.WriteLine($"conta[{i}] = {contaAtual.Numero}");
             }
+        }
+
+        static void TestaListaDeContaCorrente()
+        {
+            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+
+            //lista.MeuMetodo(numero: 10); Exemplo de chamada onde se passa direto o argumento que queremos usar
+
+            ContaCorrente contadoGui = new ContaCorrente(434, 3434343);
+            lista.Adicionar(contadoGui);
+
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                new ContaCorrente(875, 5679787),
+            };
+
+            lista.AdicionarVarios(new ContaCorrente(875, 5679787),
+                    new ContaCorrente(875, 56797989),
+                    new ContaCorrente(875, 5679745),
+                    new ContaCorrente(875, 5679745),
+                    new ContaCorrente(875, 5679745),
+                    new ContaCorrente(875, 5679745),
+                    new ContaCorrente(875, 5679745),
+                    new ContaCorrente(875, 5679745),
+                    new ContaCorrente(875, 5679745));
+
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                ContaCorrente itemAtual = lista[i]; //Aqui usamos um indexador
+                Console.WriteLine($"Item na posição: {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
+            }
+            Console.ReadLine();
         }
 
         static void TestaArrayInt()

@@ -95,6 +95,15 @@ namespace ByteBank.SistemaAgencia
             _itens = novoArray;
         }
 
+        //O params permite que sejam adicionados n parâmetros.
+        public void AdicionarVarios(params ContaCorrente[] contas)
+        {
+            foreach (ContaCorrente conta in contas)
+            {
+                Adicionar(conta);
+            }
+        }
+
         //esse seria um indexador por chave, nós buscaríamos por alguma chave string no array
         //public ContaCorrente this[string texto]
         //{
