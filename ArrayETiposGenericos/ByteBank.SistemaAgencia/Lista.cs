@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace ByteBank.SistemaAgencia
 {
     //Lista Genérica, o que indica que ela é genérica é o <T>
+    //É possível criarmos classes genéricas, assim reaproveitamos todos os métodos e as lógicas dela para qualquer tipo valor
     public class Lista<T>
     {
         private T[] _itens;
