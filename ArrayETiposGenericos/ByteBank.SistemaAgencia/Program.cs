@@ -12,24 +12,32 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            //No caso, o programa vai olha lá no código da Lista, todos os lugares que estão como T, ele vai trocar por int
+            Lista<int> idades = new Lista<int>();
 
+            idades.Adicionar(5);
+            idades.AdicionarVarios(10,20,30,40,50);
+
+            Console.WriteLine(SomarVarios(1, 2, 3, 4, 123123, 12312));
+
+            Console.ReadLine();
+        }
+
+        static void TestaListaDeObject()
+        {
             ListaDeObject listaDeIdades = new ListaDeObject();
             listaDeIdades.Adicionar(10);
             listaDeIdades.Adicionar(5);
             listaDeIdades.Adicionar(4);
-            listaDeIdades.AdicionarVarios(16,23,60);
+            listaDeIdades.AdicionarVarios(16, 23, 60);
 
             for (int i = 0; i < listaDeIdades.Tamanho; i++)
             {
                 int idade = (int)listaDeIdades[i];
                 Console.WriteLine($"Idade no índice: {i}: {idade}");
             }
-
-            Console.WriteLine(SomarVarios(1, 2, 3, 4, 123123, 12312));
-
-
-            Console.ReadLine();
         }
+
         static int SomarVarios(params int[] numeros)
         {
             int acumulador = 0;
