@@ -18,6 +18,16 @@ namespace ByteBank.SistemaAgencia
             idades.Adicionar(5);
             idades.AdicionarVarios(10,20,30,40,50);
 
+            //todas as nossas classes que criamos podem receber null pois são tipos de referência,
+            //Já o nosso T, o int, string, o double, char, bool e todos os outros, são tipo valor, e tipos valor não podem receber null
+            //ContaCorrente conta = null;
+
+            int idadeSoma = 0;
+            for (int i = 0; i < idades.Tamanho; i++)
+            {
+                int idadeAtual = idades[i];
+            }
+
             Console.WriteLine(SomarVarios(1, 2, 3, 4, 123123, 12312));
 
             Console.ReadLine();

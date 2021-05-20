@@ -69,7 +69,6 @@ namespace ByteBank.SistemaAgencia
             _proximaPosicao--;
 
             //Seta a última casa como null pois o valor dela já foi movido para a casa anterior
-            //_itens[_proximaPosicao] = null;
         }
 
         private void VerificarCapacidade(int tamanhoNecessario)
