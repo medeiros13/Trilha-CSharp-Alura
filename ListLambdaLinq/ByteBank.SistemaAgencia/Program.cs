@@ -13,6 +13,23 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            var nomes = new List<string>()
+            {
+                "Weslley",
+                "Guilherme",
+                "Luana",
+                "Gabriel",
+                "Ana",
+                "Carla"
+            };
+
+            nomes.Sort();
+
+            foreach (var nome in nomes)
+            {
+                Console.WriteLine(nome);
+            }
+
             var idades = new List<int>();
 
             idades.Add(5);
