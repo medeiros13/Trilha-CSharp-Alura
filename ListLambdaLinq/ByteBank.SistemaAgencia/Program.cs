@@ -13,6 +13,15 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            //O var significa que o compilador vai assumir o tipo dessa variável a partir do valor que foi atribuido á ela
+            var conta = new ContaCorrente(344, 5435435); //Aqui ele assumiu que conta é uma ContaCorrente
+            var gerenciador = new GerenciadorBonificacao(); //Aqui ele assumiu que conta é uma GerenciadorBonificacao
+            var gerenciadores = new List<GerenciadorBonificacao>(); //Aqui ele assumiu que conta é uma List<GerenciadorBonificacao>
+            var nome = "Gabriel"; //Aqui o compilador assumiu que nome é uma string
+            var age = 10; //Aqui ele assumiu que é um int
+            var soma = SomarVarios(); //Aqui ele assumiu que é um int pois int é o retorno do SomarVarios;
+
+
             List<int> idades = new List<int>();
 
             idades.Add(5);
