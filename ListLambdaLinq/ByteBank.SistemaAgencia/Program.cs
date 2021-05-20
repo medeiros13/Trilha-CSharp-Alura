@@ -17,7 +17,16 @@ namespace ByteBank.SistemaAgencia
             idades.Add(5);
             idades.Add(10);
             idades.Add(15);
-            ListExtensoes.AdicionarVarios(idades, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+            //ListExtensoes.AdicionarVarios(idades, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+            //Quando utilizamos o método de extensão diretamente do tipo que extendemos, o programa já entende que o primeiro argumento é o próprio tipo
+            //Aqui nesse exemplo, o método AdicionarVarios já entendeu que seu primeiro argumento é a própria idades. Agora só precisamos adicionar os outros parâmetros seguintes
+            idades.AdicionarVarios(5, 10, 20, 40, 50, 60, 10);
+
+            //No caso, aqui acima, o que o compilador fez foi basicamente isso:
+            //ListExtensoes.AdicionarVarios(idades, 5, 10, 20, 40, 50, 60, 10);
+            //Só que implicitamente, sem precisar chamar o ListExtensoes
 
             foreach (int idade in idades)
             {
