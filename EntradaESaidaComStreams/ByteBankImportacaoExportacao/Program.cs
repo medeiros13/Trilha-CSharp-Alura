@@ -8,22 +8,20 @@ using System.IO; //IO = Input e Output
 
 namespace ByteBankImportacaoExportacao
 {
-    class Program
+    //Utilizamos o modificador "partial" quando desejamos que uma classe no mesmo namespace tenha métodos em arquivos separados, ao executar, o programa vai juntar todos essas "parciais" e montar a classe completa
+    partial class Program
     {
         static void Main(string[] args)
         {
             var enderecoDoArquivo = "contas.txt";
-
-            //Só podemos usar o using quando estamos trabalhando com classes que implementam a interfacee IDisposable
-            using (var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open))
+            //Quando temos um using logo após o outro, retiramos as chaves do primeiro using e deixamos os ambos no mesmo nível de identação
+            using (var fluxoDeArquivo = new FileStream(enderecoDoArquivo, FileMode.Open))
+            using (var leitor = new StreamReader(fluxoDeArquivo))
             {
-                var buffer = new byte[1024]; //1kb
-                var numeroBytesLidos = -1;
-
-                while (numeroBytesLidos != 0)
+                while (!leitor.EndOfStream)
                 {
-                    numeroBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024);
-                    EscreverBuffer(buffer, numeroBytesLidos);
+                    var linha = leitor.ReadLine();
+                    Console.WriteLine(linha);
                 }
             }
             Console.ReadLine();
@@ -35,5 +33,6 @@ namespace ByteBankImportacaoExportacao
             var texto = utf8.GetString(buffer, 0, numeroDeBytesLidos);
             Console.WriteLine(texto);
         }
+
     }
 }
