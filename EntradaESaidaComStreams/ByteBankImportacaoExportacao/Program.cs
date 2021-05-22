@@ -9,6 +9,7 @@ using System.IO; //IO = Input e Output
 namespace ByteBankImportacaoExportacao
 {
     //Utilizamos o modificador "partial" quando desejamos que uma classe no mesmo namespace tenha métodos em arquivos separados, ao executar, o programa vai juntar todos essas "parciais" e montar a classe completa
+    //O partial é útil em exemplos como: Temos uma classe cliente, criamos uma partial contendo só os atributos dela, e outra partial contendo só os métodos. Para assim, quando for necessário modificarmos algum método irmos direto no arquivo dos métodos, ou quando for necessário modificarmos algum atributo, irmos direto no arquivo dos atributos
     partial class Program
     {
         static void Main(string[] args)
