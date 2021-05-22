@@ -25,7 +25,7 @@ namespace ByteBankImportacaoExportacao
 
                     var contaCorrente = ConverterStringParaContaCorrente(linha);
 
-                    var msg = $"Conta: {contaCorrente.Numero}, Agência: {contaCorrente.Agencia}, Saldo: {contaCorrente.Saldo}";
+                    var msg = $"{contaCorrente.Titular.Nome}: Conta: {contaCorrente.Numero}, Agência: {contaCorrente.Agencia}, Saldo: {contaCorrente.Saldo}";
 
                     Console.WriteLine(msg);
                 }
@@ -35,7 +35,7 @@ namespace ByteBankImportacaoExportacao
 
         static ContaCorrente ConverterStringParaContaCorrente(string linha)
         {
-            var campos = linha.Split(' ');
+            var campos = linha.Split(',');
             var agencia = campos[0];
             var numero = campos[1];
             var saldo = campos[2].Replace('.', ',');
