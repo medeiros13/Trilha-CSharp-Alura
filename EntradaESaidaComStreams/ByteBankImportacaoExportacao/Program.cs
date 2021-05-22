@@ -14,22 +14,7 @@ namespace ByteBankImportacaoExportacao
     {
         static void Main(string[] args)
         {
-            var enderecoDoArquivo = "contas.txt";
-            //Quando temos um using logo após o outro, retiramos as chaves do primeiro using e deixamos os ambos no mesmo nível de identação
-            using (var fluxoDeArquivo = new FileStream(enderecoDoArquivo, FileMode.Open))
-            using (var leitor = new StreamReader(fluxoDeArquivo))
-            {
-                while (!leitor.EndOfStream)
-                {
-                    var linha = leitor.ReadLine();
-
-                    var contaCorrente = ConverterStringParaContaCorrente(linha);
-
-                    var msg = $"{contaCorrente.Titular.Nome}: Conta: {contaCorrente.Numero}, Agência: {contaCorrente.Agencia}, Saldo: {contaCorrente.Saldo}";
-
-                    Console.WriteLine(msg);
-                }
-            }
+            CriarArquivo();
             Console.ReadLine();
         }
 
