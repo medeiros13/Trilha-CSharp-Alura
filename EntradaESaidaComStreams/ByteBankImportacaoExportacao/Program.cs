@@ -23,18 +23,16 @@ namespace ByteBankImportacaoExportacao
                 while (numeroBytesLidos != 0)
                 {
                     numeroBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024);
-
+                    EscreverBuffer(buffer, numeroBytesLidos);
                 }
-                EscreverBuffer(buffer);
             }
-
             Console.ReadLine();
         }
 
-        static void EscreverBuffer(byte[] buffer)
+        static void EscreverBuffer(byte[] buffer, int numeroDeBytesLidos)
         {
             var utf8 = Encoding.Default; //o Default, vai pegar o UFT padrão utilizado no sistema operacional do computador
-            var texto = utf8.GetString(buffer);
+            var texto = utf8.GetString(buffer, 0, numeroDeBytesLidos);
             Console.WriteLine(texto);
         }
     }
