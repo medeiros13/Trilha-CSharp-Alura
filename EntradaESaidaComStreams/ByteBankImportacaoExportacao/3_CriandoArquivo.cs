@@ -35,5 +35,22 @@ namespace ByteBankImportacaoExportacao
                 escritor.Write("456,78945,4785.50,Gabriel Medeiros");
             }
         }
+
+        static void TestaEscrita()
+        {
+            var caminhoArquivo = "teste.txt";
+            using (var fluxoDeArquivo = new FileStream(caminhoArquivo, FileMode.Create))
+            using (var escritor = new StreamWriter(fluxoDeArquivo))
+            {
+                for (int i = 0; i < 1000000; i++)
+                {
+                    escritor.WriteLine($"Linha {i}");
+                    escritor.Flush(); //Despeja o buffer para o Stream, ou seja, ele já escreve imediatamente no arquivo, mesmo dentro do using, ignorando o buffer
+                    Console.WriteLine($"Linha {i} foi escrita no arquivo. Tecle enter para adicionar mais uma:");
+                    Console.ReadLine();
+
+                }
+            }
+        }
     }
 }
