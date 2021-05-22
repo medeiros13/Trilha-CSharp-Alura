@@ -23,5 +23,17 @@ namespace ByteBankImportacaoExportacao
                 fluxoDeArquivo.Write(bytes, 0, bytes.Length);
             }
         }
+
+        static void CriarArquivoComWriter()
+        {
+            var caminhoNovoArquivo = "contasExportadas.csv";
+            //o FileMode.Create, se o arquivo já existe, ele limpa todo o conteúdo do arquivo e escreve o que precisa ser escrito
+            //Já o FileMode.CreateNew verifica se o arquivo já existe, se já existir, lança uma exceção
+            using (var fluxoDeArquivo = new FileStream(caminhoNovoArquivo, FileMode.CreateNew))
+            using (var escritor = new StreamWriter(fluxoDeArquivo))
+            {
+                escritor.Write("456,78945,4785.50,Gabriel Medeiros");
+            }
+        }
     }
 }
