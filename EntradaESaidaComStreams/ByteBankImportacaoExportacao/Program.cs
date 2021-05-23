@@ -14,7 +14,25 @@ namespace ByteBankImportacaoExportacao
     {
         static void Main(string[] args)
         {
-            UsarStreamDeEntrada();
+
+            //Utilizamos a classe File quando sabemos que os arquivos que iremos manipular não são grandes
+            File.WriteAllText("escrevendoComAClasseFile.txt", "Testando File.WriteAllText");
+            
+            Console.WriteLine("Arquivo escrevendoComAClasseFile criado!");
+
+            var bytes = File.ReadAllBytes("contas.txt");
+            Console.WriteLine($"Arquivo contas.txt possui {bytes.Length} bytes");
+
+
+
+            var linhas = File.ReadAllLines("contas.txt");
+            Console.WriteLine(linhas.Length);
+            
+            foreach (var linha in linhas)
+            {
+                Console.WriteLine(linha);
+            }
+
             Console.WriteLine("Aplicação Finalizada!");
             Console.ReadLine();
         }
